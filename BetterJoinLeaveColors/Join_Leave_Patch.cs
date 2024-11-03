@@ -28,10 +28,13 @@ public class Join_Leave_Patch : IScriptMod
             t => t is IdentifierToken{Name:"_update_chat"}, // _update_chat
             t => t.Type is TokenType.ParenthesisOpen, // (
         ]);
-        // + message
+        // _delayed_join_message(making_change_id, " joined the game."
         MultiTokenWaiter join = new MultiTokenWaiter([
-            t => t.Type is TokenType.OpAssign, // +
-            t => t is IdentifierToken{Name:"message"}, // message
+            t => t is IdentifierToken{Name:"_delayed_join_message"}, // message
+            t => t.Type is TokenType.ParenthesisOpen, // (
+            t => t is IdentifierToken{Name:"making_change_id"}, // making_change_id
+            t => t.Type is TokenType.Comma,
+            t => t is ConstantToken{Value: StringVariant{Value:" joined the game."}}
         ]);
         // " left the game."
         TokenWaiter leave = new TokenWaiter(t => t is ConstantToken{Value: StringVariant{Value:" left the game."}});
@@ -57,9 +60,7 @@ public class Join_Leave_Patch : IScriptMod
             }
             else if (join.Check(token))
             {
-                yield return token;
-                yield return new Token(TokenType.OpAdd);
-                yield return new ConstantToken(new StringVariant("[/color]"));
+                yield return new ConstantToken(new StringVariant(" joined the game.[/color]"));
             }
             else if (leave.Check(token))
             {
