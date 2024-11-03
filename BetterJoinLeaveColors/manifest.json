@@ -1,0 +1,10 @@
+{
+  "Id": "NotABird.BetterJoinLeave",
+  "AssemblyPath": "BetterJoinLeaveColors.dll",
+  "Metadata": {
+    "Name": "Better Join Leave Colors",
+    "Author": "Not A Bird",
+    "Version": "1.0.0",
+    "Description": "changes the color of when people join/leave"
+  }
+}

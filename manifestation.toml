@@ -1,0 +1,16 @@
+
+id = "NotABird.BetterJoinLeave"
+name = "Better Join Leave Colors"
+description = "changes the color of when people join/leave."
+version = "1.0.0"
+homepage = "https://github.com/NotNite/WebfishingSampleMod"
+author = "Not A Bird"
+
+icon = "icon.png"
+readme = "README.md"
+
+[project]
+csharp = "./WebfishingSampleMod/WebfishingSampleMod.csproj"
+
+[[dependencies]]
+thunderstore_version = "NotNet-GDWeave-2.0.13"

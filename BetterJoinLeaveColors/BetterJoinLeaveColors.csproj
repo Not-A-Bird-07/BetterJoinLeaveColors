@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <GDWeavePath>/run/media/notabird/fast/SteamLibrary/steamapps/common/WEBFISHING/GDWeave</GDWeavePath>
+        <AssemblySearchPaths>$(AssemblySearchPaths);$(GDWeavePath)/core</AssemblySearchPaths>
+        <Version>1.0.0.0</Version>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Reference Include="GDWeave" Private="false"/>
+        <Reference Include="Serilog" Private="false"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Include="manifest.json" CopyToOutputDirectory="PreserveNewest"/>
+        <None Update="NotABird.Commands.pck">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+    </ItemGroup>
+
+    <Target Name="CopyToPlugins" AfterTargets="Build">
+        <ItemGroup>
+            <FilesToCopy Include="$(TargetDir)**/*" />
+        </ItemGroup>
+        <Copy SourceFiles="@(FilesToCopy)" DestinationFolder="$(GDWeavePath)/mods/$(AssemblyName)/" />
+        <Message Text="Copied all files and folders to Plugins" Importance="high"/>
+    </Target>
+</Project>
