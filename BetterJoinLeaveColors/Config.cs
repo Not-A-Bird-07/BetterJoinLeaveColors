@@ -3,6 +3,6 @@
 namespace BetterJoinLeaveColors;
 
 public class Config {
-    [JsonInclude] public string Join = "#038a07";
-    [JsonInclude] public string Leave = "#8a0310";
+    [JsonInclude] public string Join = "038a07";
+    [JsonInclude] public string Leave = "8a0310";
 }
