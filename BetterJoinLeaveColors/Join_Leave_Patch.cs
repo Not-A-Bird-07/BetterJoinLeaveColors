@@ -20,12 +20,12 @@ public class Join_Leave_Patch : IScriptMod
                 if (!test)// this is very cursed, but it works because it patches the leaving message first then the joining one
                 {
                     test = true;
-                    yield return new ConstantToken(new StringVariant(Mod.Instance.Config.Leave.Replace("#", ""))); //leave
+                    yield return new ConstantToken(new StringVariant(Mod.Instance.Config.Join.Replace("#", ""))); //join
                 }
                 else
                 {
                     test = false;
-                    yield return new ConstantToken(new StringVariant(Mod.Instance.Config.Join.Replace("#", ""))); //join
+                    yield return new ConstantToken(new StringVariant(Mod.Instance.Config.Leave.Replace("#", ""))); //leave
                 }
                 color.Reset();
             }
